@@ -20,7 +20,7 @@ let parse_with_error lexbuf =
 let rec parse_and_print lexbuf =
   match parse_with_error lexbuf with
   | Some value ->
-    printf "%a\n" LC.output_value value;
+    print_int (LC.eval_value [] value); print_string "\n";
     parse_and_print lexbuf
   | None -> ()
 
