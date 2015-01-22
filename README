@@ -5,10 +5,11 @@ Run using ./test.native <file>.lc
 
 Syntax:
 
-(F x. ___) A -> A function of x with x=A
-I _ T _ E _ -> If, then, else (O is False, everything else is True)
-5 -> Int
+The syntax is a subset of OCaml's
 
+`fun x -> _` is a function.
+`if _ then _ else _` is a conditional
+`( _ ) _` is an application
 
-eg. I 5 T 100 E 0 evaluates to 100
-eg. (F x. I (F y. I y T 100 E 5) 1 T 200 E 0) 1 -> 200
+e.g. if 5 then 100 else 0 evaluates to 100
+e.g. (fun x -> if (fun y -> if y then 100 else 5) 1 then 200 else 0) 1 -> 200

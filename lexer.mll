@@ -25,14 +25,14 @@ rule read =
   | white    { read lexbuf }
   | newline  { next_line lexbuf; read lexbuf }
   | int      { INT (int_of_string (Lexing.lexeme lexbuf)) }
+  | "if"  { KWIF }
+  | "then"   { KWTHEN }
+  | "else" {KWELSE}
+  | "fun" {KWFUN}
+  | "->" {ARROW}
+  | "(" {LEFTPAREN}
+  | ")" {RIGHTPAREN}
   | id       { ID (Lexing.lexeme lexbuf)}
-  | "I"  { IF }
-  | "T"   { THEN }
-  | "E" {ELSE}
-  | "F" {FUNC}
-  | "." {DOT}
-  | "(" {LEFT}
-  | ")" {RIGHT}
   | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
   | eof      { EOF }
 
