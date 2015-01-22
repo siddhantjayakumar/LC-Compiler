@@ -1,0 +1,14 @@
+Compile using: ocamlbuild -use-menhir -tag thread -use-ocamlfind -quiet -pkg core test.native
+
+Type the source code into <file>.lc
+Run using ./test.native <file>.lc
+
+Syntax:
+
+(F x. ___) A -> A function of x with x=A
+I _ T _ E _ -> If, then, else (O is False, everything else is True)
+5 -> Int
+
+
+eg. I 5 T 100 E 0 evaluates to 100
+eg. (F x. I (F y. I y T 100 E 5) 1 T 200 E 0) 1 -> 200

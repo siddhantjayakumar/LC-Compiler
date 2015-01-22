@@ -1,4 +1,1 @@
-(F y. I y T (F x. I x T 100 E 5) 1 E 10) 0
-(F y. I y T (F x. I x T 100 E 5) 1 E 10) 1
-
-
+(F x. I (F y. I y T 100 E 5) 1 T 200 E 0) 1
