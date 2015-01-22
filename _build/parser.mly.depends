@@ -1,2 +1,0 @@
-parser.ml: LC Lexing
-parser.mli: LC Lexing

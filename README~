@@ -1,4 +1,0 @@
-Compile using: ocamlbuild -use-menhir -tag thread -use-ocamlfind -quiet -pkg core test.native
-
-Type the source code into <file>.lc
-Run using ./test.native <file>.lc
