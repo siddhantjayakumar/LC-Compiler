@@ -17,7 +17,7 @@ let int = ['0'-'9'] ['0'-'9']*
 
 let white = [' ' '\t']+
 let newline = '\r' | '\n' | "\r\n"
-let id = ['a'-'z' 'A'-'Z' '_'] ['a'-'z' 'A'-'Z' '0'-'9' '_']*
+let id = ['a'-'z']
 
 (* part 4 *)
 rule read =
@@ -25,9 +25,14 @@ rule read =
   | white    { read lexbuf }
   | newline  { next_line lexbuf; read lexbuf }
   | int      { INT (int_of_string (Lexing.lexeme lexbuf)) }
+  | id       { ID (Lexing.lexeme lexbuf)}
   | "I"  { IF }
   | "T"   { THEN }
   | "E" {ELSE}
-    | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
+  | "F" {FUNC}
+  | "." {DOT}
+  | "(" {LEFT}
+  | ")" {RIGHT}
+  | _ { raise (SyntaxError ("Unexpected char: " ^ Lexing.lexeme lexbuf)) }
   | eof      { EOF }
 

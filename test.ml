@@ -33,7 +33,7 @@ let loop filename () =
 
 (* part 2 *)
 let () =
-  Command.basic ~summary:"Parse and display JSON"
+  Command.basic ~summary:"Parse and display LC"
     Command.Spec.(empty +> anon ("filename" %: file))
     loop 
   |> Command.run
