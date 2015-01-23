@@ -1,1 +1,6 @@
-(F x. I (F y. I y T 100 E 5) 1 T 200 E 0) 1
+(fun x ->
+	if (fun y -> if y then 100 else 5) 1 then
+		200
+	else
+		0
+) 1

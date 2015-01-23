@@ -1,13 +1,13 @@
 %token <int> INT
 %token <string> ID
-%token IF
-%token ELSE
-%token LEFT
-%token RIGHT
-%token THEN
+%token KWIF
+%token KWELSE
+%token LEFTPAREN
+%token RIGHTPAREN
+%token KWTHEN
 %token EOF
-%token FUNC
-%token DOT
+%token KWFUN
+%token ARROW
 %start <LC.value option> prog
 %%
 
@@ -21,11 +21,11 @@ value:
    {`Id d}
   | i = INT;
     {`Int i}
-  | IF; cond = value; THEN; t = value; ELSE; e = value;
+  | KWIF; cond = value; KWTHEN; t = value; KWELSE; e = value;
     {`If(cond,t,e)}
-  |FUNC; x = ID; DOT; v = value;
+  |KWFUN; x = ID; ARROW; v = value;
    { `Func(x,v) }
-  |LEFT; v = value; RIGHT; v2 = value;
+  |LEFTPAREN; v = value; RIGHTPAREN; v2 = value;
    { `App(v,v2)}
 ;
 
